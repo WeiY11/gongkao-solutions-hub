@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>公考解题导航 | 行测 · 申论</title>
+<style>
+:root{--bg:#f3f7f6;--ink:#233747;--muted:#6b8090;--blue:#3b7496;--teal:#209e91;--line:#dce9e9;--panel:#fff;--pale:#e9f4f2;--warm:#fff7e8;--gold:#b47c37;--shadow:0 13px 40px rgba(30,66,77,.055);--radius:18px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;font-size:14px;line-height:1.75}
+a{color:inherit;text-decoration:none}
+.shell{max-width:1180px;margin:auto;padding:0 24px 40px}
+
+.topbar{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:30px 4px 18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:13px}
+.mark{width:46px;height:46px;display:grid;place-items:center;border-radius:15px;color:#fff;font-size:21px;font-weight:900;background:linear-gradient(145deg,#36849b,#42b9a1);box-shadow:0 6px 16px #269d902c}
+.eyebrow{font-size:11px;letter-spacing:2.4px;color:var(--teal);font-weight:800}
+.brand h1{font-size:23px;letter-spacing:.4px;line-height:1.35;margin:0;color:#21384a}
+.brand small{font-size:12px;color:#87959e}
+.tally{display:flex;gap:9px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:#fff;padding:8px 14px;border-radius:999px;color:#506a77;font-size:12px;font-weight:700;white-space:nowrap}
+.pill strong{color:var(--teal);font-variant-numeric:tabular-nums}
+
+.lede{border:1px solid var(--line);border-left:4px solid var(--teal);background:var(--panel);border-radius:var(--radius);padding:16px 20px;box-shadow:var(--shadow);margin-bottom:20px}
+.lede strong{color:#2b4557}
+.lede p{margin:5px 0 0;color:var(--muted);font-size:13px}
+
+.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+.search{position:relative;flex:1 1 260px;min-width:220px}
+.search input{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;padding:11px 14px 11px 38px;font:inherit;font-size:13px;color:var(--ink);outline:none;transition:.15s}
+.search input:focus{border-color:#75bcb7;box-shadow:0 0 0 3px rgba(32,158,145,.13)}
+.search span{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:#fff;color:#5b7383;padding:8px 13px;border-radius:999px;font-size:12px;font-weight:750;cursor:pointer;transition:.15s}
+.chip:hover{border-color:#75bcb7;background:#f0faf7}
+.chip.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.chip b{font-variant-numeric:tabular-nums;opacity:.75;margin-left:4px}
+
+.group{margin-bottom:28px}
+.group-head{display:flex;align-items:center;gap:11px;margin:0 2px 13px}
+.group-head h2{font-size:14px;letter-spacing:1.2px;margin:0;color:#2f4d5f;font-weight:850}
+.group-head .rule{flex:1;height:1px;background:var(--line)}
+.group-head .n{font-size:11px;color:var(--muted);font-weight:700}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 19px 16px;box-shadow:var(--shadow);transition:.18s;color:inherit}
+.card:hover{transform:translateY(-3px);border-color:#8fcac5;box-shadow:0 18px 44px rgba(30,66,77,.11)}
+.card .tagrow{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.badge{font-size:10.5px;font-weight:850;letter-spacing:.6px;padding:4px 9px;border-radius:7px;background:var(--pale);color:var(--teal)}
+.badge.shenlun{background:var(--warm);color:var(--gold)}
+.cardtime{margin-left:auto;font-size:11px;color:#93a3ac;font-weight:700}
+.card h3{font-size:16px;margin:0 0 6px;color:#21384a;line-height:1.45}
+.card p{margin:0 0 12px;color:var(--muted);font-size:12.5px;line-height:1.7}
+.kw{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.kw i{font-style:normal;font-size:11px;color:#5e7c8b;background:#f4f8f8;border:1px solid #e5eeee;border-radius:6px;padding:3px 8px}
+.card .go{margin-top:auto;display:flex;align-items:center;justify-content:space-between;border-top:1px dashed #e3eded;padding-top:12px;font-size:12px;font-weight:800;color:var(--teal)}
+.card .go em{font-style:normal;color:#9aacb4;font-weight:700}
+.card:hover .go .arr{transform:translateX(4px)}
+.arr{display:inline-block;transition:.18s}
+
+.empty{border:1px dashed var(--line);border-radius:var(--radius);background:#fbfdfd;padding:34px 20px;text-align:center;color:var(--muted);font-size:13px}
+.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:11.5px;color:#93a3ac}
+.foot b{color:#5e7c8b}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand">
+      <div class="mark">解</div>
+      <div>
+        <div class="eyebrow">GONGKAO / SOLUTIONS</div>
+        <h1>公考解题导航</h1>
+        <small>行测与申论的交互式解题页目录 · 逐题解析、速算与高亮定位</small>
+      </div>
+    </div>
+    <div class="tally">
+      <span class="pill">共 <strong id="totCount">0</strong> 个解题页</span>
+      <span class="pill">最近更新 <strong id="lastDate">—</strong></span>
+    </div>
+  </header>
+
+  <section class="lede">
+    <strong>把每套题做成可反复练习的页面，而不是一次性的答案。</strong>
+    <p>点开任意卡片进入对应解题页；作答进度与计时保存在各自页面的浏览器本地存储中，互不干扰。</p>
+  </section>
+
+  <div class="toolbar">
+    <label class="search"><span>⌕</span><input id="q" type="search" placeholder="搜索题目、模块或方法关键词…" autocomplete="off"/></label>
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <div id="catalog"></div>
+
+  <footer class="foot">
+    <span>目录数据在 <b>index.html</b> 的 <b>SOLUTIONS</b> 数组中，新增解题页时追加一条即可。</span>
+    <span>解题页文件统一放在 <b>solutions/</b> 目录。</span>
+  </footer>
+</div>
+
+<script>
+const SOLUTIONS=[
+  {
+    title:"资料分析 · 20题原文数据高亮",
+    module:"资料分析",
+    file:"solutions/ziliao-fenxi-20ti-data-highlight.html",
+    desc:"左上固定当前题目、左下独立滚动查看原始材料，右栏分步解析与速算；开启高亮可即时定位本题用到的原始数字。",
+    count:"20 题 · 4 篇资料",
+    tags:["高亮解题数据","练习模式","计时器","增长率与比重"],
+    date:"2026-10-15"
+  }
+];
+
+const MODULE_ORDER=["资料分析","数量关系","判断推理","言语理解与表达","常识判断","申论"];
+const state={q:"",module:"全部"};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const hit=s=>{const hay=[s.title,s.module,s.desc,s.count,(s.tags||[]).join(" ")].join(" ").toLowerCase();return !state.q||hay.includes(state.q.toLowerCase())};
+
+function render(){
+  const list=SOLUTIONS.filter(hit);
+  const shown=state.module==="全部"?list:list.filter(s=>s.module===state.module);
+  const groups=[];
+  MODULE_ORDER.forEach(m=>{const g=shown.filter(s=>s.module===m);if(g.length)groups.push([m,g])});
+  shown.forEach(s=>{if(!MODULE_ORDER.includes(s.module)&&!groups.some(g=>g[0]===s.module))groups.push([s.module,shown.filter(x=>x.module===s.module)])});
+
+  document.getElementById("catalog").innerHTML=groups.length?groups.map(([m,g])=>`
+    <section class="group">
+      <div class="group-head"><h2>${esc(m)}</h2><span class="rule"></span><span class="n">${g.length} 个</span></div>
+      <div class="grid">${g.map(s=>card(s)).join("")}</div>
+    </section>`).join(""):`<div class="empty">没有匹配的解题页，换个关键词试试。</div>`;
+
+  const counts={};
+  SOLUTIONS.forEach(s=>counts[s.module]=(counts[s.module]||0)+1);
+  const rank=m=>{const i=MODULE_ORDER.indexOf(m);return i<0?MODULE_ORDER.length:i};
+  const mods=Object.keys(counts).sort((a,b)=>rank(a)-rank(b));
+  document.getElementById("chips").innerHTML=["全部",...mods].map(m=>`<button class="chip${m===state.module?" on":""}" data-m="${esc(m)}">${esc(m)}<b>${m==="全部"?SOLUTIONS.length:counts[m]}</b></button>`).join("");
+  document.getElementById("totCount").textContent=SOLUTIONS.length;
+  document.getElementById("lastDate").textContent=SOLUTIONS.reduce((a,s)=>s.date>a?s.date:a,"");
+}
+
+function card(s){
+  const badge=s.module==="申论"?"badge shenlun":"badge";
+  return `<a class="card" href="${esc(s.file)}">
+    <div class="tagrow"><span class="${badge}">${esc(s.module)}</span><span class="cardtime">${esc(s.count)}</span></div>
+    <h3>${esc(s.title)}</h3>
+    <p>${esc(s.desc)}</p>
+    <div class="kw">${(s.tags||[]).map(t=>`<i>${esc(t)}</i>`).join("")}</div>
+    <div class="go"><span>进入解题 <span class="arr">→</span></span><em>${esc(s.date)}</em></div>
+  </a>`;
+}
+
+document.getElementById("q").addEventListener("input",e=>{state.q=e.target.value.trim();render()});
+document.getElementById("chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;state.module=b.dataset.m;render()});
+render();
+</script>
+</body>
+</html>
